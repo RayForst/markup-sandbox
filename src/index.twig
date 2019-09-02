@@ -1,13 +1,77 @@
 {% extends "_layout.twig" %}
 
 {% block page %}
-  <h1>
-    Hello
-  </h1>
+  <div class="tour-list">
+    {% for tour in hot %}
+      <div class="hot-tour">
+        <div class="hot-tour-preview">
+          <div class="test">
+            <div class="discount">-33%</div>
+            <div class="price">
+              <div class="arrow"></div>
+              <div class="text">
+                от
+                <b>27 064 p./чел</b>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="hot-tour-name">
+          <div class="name">
+            {{ tour.name }}
+          </div>
+          <div class="location">Таиланд, Пхукет</div>
+        </div>
 
-  {% for tour in hot %}
-    <div class="hot-tour">{{ tour.name }}</div>
-  {% endfor %}
+        <div class="details">
+          <div class="hot-tour-includes">
+            <div class="line">
+              <b>Песчаный пляж в 850 м</b>
+            </div>
+            <div class="line">BB - Только завтрак</div>
+            <div class="line">Кондиционер, WiFi</div>
+            <div class="line">Мед. страховка Включена</div>
+          </div>
 
+          <div class="hot-tour-about">
+            <div class="line">
+              <b>15.05 - 22.05</b>
+              <b class="nights">7 ночей</b>
+            </div>
+            <div class="line">Цена на одного взрослого, при двухместном размещении</div>
+            <div class="line">Старая цена — 40 379 р.</div>
 
+            <div class="price">
+              <div class="discount">-33%</div>
+              <div class="value">27 064 р.</div>
+            </div>
+          </div>
+
+          <div class="hot-tour-operator">
+            <div class="operator">Biblio Globus</div>
+          </div>
+
+          <div class="hot-tour-all">
+            <button>Еще туры</button>
+          </div>
+        </div>
+      </div>
+
+      {% if loop.index == 1 %}
+        <div class="hot-tour-info">{{ hotInfo }}</div>
+      {% endif %}
+
+      {% if loop.index == 4 %}
+        <div class="get-coupon">
+          купон
+        </div>
+      {% endif %}
+
+      {% if loop.index == hot.length %}
+        <div class="get-coupon">
+          Нужно больше вариантов? Смотрите поиск по всем турам!
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
 {% endblock %}

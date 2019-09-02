@@ -8,6 +8,8 @@ function html() {
     .pipe(
       twig({
         data: {
+          hotInfo:
+            "Самые лучшие предложения по цене могут быть доступны несколько часов, а некоторые не более часа.Бронируйте оперативно онлайн — иначе по туру который вы смотрите улетит кто- то другой!",
           hot: [
             {
               name: "Chang Club",
@@ -46,6 +48,11 @@ function css() {
     .pipe(dest("./public/css"));
 }
 
+function watchFiles() {
+  watch("./src/css/*.scss", css);
+  watch("./src/*.twig", html);
+}
+
 // function js() {
 //   return src('client/javascript/*.js', { sourcemaps: true })
 //     .pipe(concat('app.min.js'))
@@ -55,4 +62,5 @@ function css() {
 // exports.js = js;
 exports.css = css;
 exports.html = html;
+exports.watch = watchFiles;
 exports.default = parallel(html, css);
